@@ -7,7 +7,7 @@ export const sendCookie = (
   res,
   statusCode = 200,
   success,
-  massage
+  message
 ) => {
   //* Token
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
@@ -23,11 +23,11 @@ export const sendCookie = (
     })
     .json({
       success,
-      massage,
-      // user,
+      message,
     });
 };
 
+// user,
 // console.log(process.env.NODE_ENV);
 // console.log(process.env.NODE_ENV === "DEVELOPMENT");
 
