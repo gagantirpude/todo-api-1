@@ -19,7 +19,7 @@ router.post("/register", register);
 router.post("/login", login);
 
 //* Logout User
-router.get("/logout", logout);
+router.get("/logout", isAuthenticated, logout);
 
 //* User Read
 router.get("/all", allusers);
