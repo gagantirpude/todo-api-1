@@ -17,7 +17,7 @@ export const sendCookie = (
     .status(statusCode)
     .cookie("token", token, {
       httpOnly: true,
-      maxAge: 15 * 60 * 1000, // 15 min
+      expires: new Date(Date.now() + 15 * 60 * 1000), // 15 min
       sameSite: "none",
       secure: true,
     })
@@ -27,6 +27,7 @@ export const sendCookie = (
     });
 };
 
+// maxAge: 15 * 60 * 1000, // 15 min
 // user,
 // console.log(process.env.NODE_ENV);
 // console.log(process.env.NODE_ENV === "DEVELOPMENT");
