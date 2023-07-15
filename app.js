@@ -23,7 +23,7 @@ app.use(
     origin: [
       process.env.FRONTEND_URL,
       "http://localhost:5173",
-      ".onrender.com",
+      "https://todo-api-tvz6.onrender.com/",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
