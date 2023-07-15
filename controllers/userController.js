@@ -55,7 +55,7 @@ export const login = async (req, res, next) => {
 
       //* Condition for Password
       if (!isMatch) {
-        return next(ErrorHandler("Invalid Email & Password", 404));
+        return next(new ErrorHandler("Invalid Email & Password", 404));
       } else {
         //* Send Cookie and JsonWeb token as Parameter
         sendCookie(users, req, res, 200, true, "User Login Successfully");
