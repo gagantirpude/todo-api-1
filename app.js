@@ -22,7 +22,7 @@ app.use(cookieParser());
 const corsOptions = {
   // origin: 'http://example.com',
   origin: [process.env.FRONTEND_URL], // Specify the allowed origin(s)
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Specify the allowed HTTP methods
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"], // Specify the allowed HTTP methods
   preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders: "Content-Type,Authorization", // Specify the allowed custom headers
