@@ -3,11 +3,6 @@ import ErrorHandler from "../middlewares/error.js";
 import bcrypt from "bcrypt";
 import userModel from "../models/userModel.js";
 import { sendCookie } from "../utils/sendCookie.js";
-// import {
-//   removeCookie,
-//   removeCookie2,
-//   removeCookie3,
-// } from "../utils/removeCookie.js";
 import { response } from "../utils/response.js";
 
 //* Register
@@ -67,24 +62,20 @@ export const login = async (req, res, next) => {
 };
 
 //* Logout User
-export const logout = async (req, res, next) => {
-  try {
-    //* Remove Cookie
-    res
-      .status(200)
-      .cookie("token", "", {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-        sameSite: "none",
-        secure: true,
-      })
-      .json({
-        success: true,
-        message: "User Logouts",
-      });
-  } catch (error) {
-    next(error);
-  }
+export const logout = async (req, res) => {
+  //* Remove Cookie
+  res
+    .status(200)
+    .cookie("token", "", {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    })
+    .json({
+      success: true,
+      message: req.user,
+    });
 };
 
 //* All User
