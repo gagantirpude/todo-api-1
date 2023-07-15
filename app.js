@@ -17,13 +17,20 @@ config({
 //* Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+
+// Configure CORS options with custom headers
+const corsOptions = {
+  // origin: 'http://example.com',
+  origin: [process.env.FRONTEND_URL], // Specify the allowed origin(s)
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Specify the allowed HTTP methods
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: "Content-Type,Authorization", // Specify the allowed custom headers
+  credentials: true,
+};
+
+// Enable CORS with custom options
+app.use(cors(corsOptions));
 
 //* Router
 app.use("/api/v1/users", userRouter); //Router Precept
@@ -39,3 +46,11 @@ app.get("/", (req, res) => {
 
 //* Export
 export default app;
+
+// app.use(
+//   cors({
+//     origin: [process.env.FRONTEND_URL],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   })
+// );
