@@ -53,7 +53,7 @@ export const login = async (req, res, next) => {
         return next(new ErrorHandler("Invalid Email & Password", 404));
       } else {
         //* Send Cookie and JsonWeb token as Parameter
-        sendCookie(users, req, res, 200, true, "User Login Successfully");
+        sendCookie(users, req, res, 200, true, `Welcome back, ${users.name}`);
       }
     }
   } catch (error) {
@@ -74,7 +74,7 @@ export const logout = async (req, res) => {
     })
     .json({
       success: true,
-      message: req.user,
+      message: `${req.user.name} Logout Successfully`,
     });
 };
 

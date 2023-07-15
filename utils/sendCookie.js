@@ -15,7 +15,7 @@ export const sendCookie = (
   //* Response
   res
     .status(statusCode)
-    .cookie("token", token, __cf_bm, {
+    .cookie("token", token, {
       httpOnly: true,
       maxAge: 15 * 60 * 1000, // 15 min
       sameSite: "none",
