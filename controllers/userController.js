@@ -3,11 +3,11 @@ import ErrorHandler from "../middlewares/error.js";
 import bcrypt from "bcrypt";
 import userModel from "../models/userModel.js";
 import { sendCookie } from "../utils/sendCookie.js";
-import {
-  removeCookie,
-  removeCookie2,
-  removeCookie3,
-} from "../utils/removeCookie.js";
+// import {
+//   removeCookie,
+//   removeCookie2,
+//   removeCookie3,
+// } from "../utils/removeCookie.js";
 import { response } from "../utils/response.js";
 
 //* Register
@@ -73,8 +73,8 @@ export const logout = async (req, res, next) => {
     res
       .status(200)
       .cookie("token", "", {
-        httpOnly: true,
         expires: new Date(Date.now()),
+        httpOnly: true,
         sameSite: "none",
         secure: true,
       })
